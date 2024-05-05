@@ -1,35 +1,60 @@
 'use strict'
 
-// renderBoard - renders the board to the DOM
-function renderBoard(mat, selector) {
-    var strHTML = '<table><tbody>'
-
-    for (var i = 0; i < mat.length; i++) {
-        strHTML += '<tr>'
-        for (var j = 0; j < mat[0].length; j++) {
-
-            const cell = mat[i][j]
-            var className = `cell cell-${i}-${j}`
-            if (cell.isMine) {
-                className += ' mine'
-            } else if (cell.minesAroundCount > 0) {
-                className += ' number'
-            }
-            if (cell.isMine) {
-                strHTML += `<td class="${className}"  oncontextmenu="setFlag(event, ${i},${j});
-                "onclick="cellClicked(${i},${j})">${MINE_IMG}</td>`
-            } else {
-                strHTML += `<td class="${className}"  oncontextmenu="setFlag(event, ${i},${j});
-                "onclick="cellClicked(${i},${j})">${cell.minesAroundCount}</td>`
-
-            }
+function createBoard(ROWS, COLS) {
+    var board = []
+    for (var i = 0; i < ROWS; i++) {
+        var row = []
+        for (var j = 0; j < COLS; j++) {
+            row.push('')
         }
-        strHTML += '</tr>'
+        board.push(row)
     }
+    return board
+}
 
-    strHTML += '</tbody></table>'
-    const elContainer = document.querySelector(selector)
-    elContainer.innerHTML = strHTML
+function generateNumbers(size) {
+    var nums = []
+    for (var i = 0; i < size; i++) {
+        nums.push(i + 1)
+    }
+    return nums
+}
+
+function shuffleArr(arr) {
+    for (var i = arr.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1))
+        var temp = arr[i]
+        arr[i] = arr[j]
+        arr[j] = temp
+    }
+}
+
+function renderCell(location, value) {
+	const cellSelector = '.' + getClassName(location)
+	const elCell = document.querySelector(cellSelector)
+	elCell.innerHTML = value
+}
+
+function disableBoardTemporarily(timeInMs) {
+    var timeOut = setTimeout(() => {
+        gGame.isOn = true
+        clearTimeout(timeOut)
+    }, timeInMs)
+}
+
+function getNeighbours(board, cellI, cellJ) {
+    var neighbours = []
+    for (var i = cellI - 1; i <= cellI + 1; i++) {
+        if (i < 0 || i >= board.length) continue
+        for (var j = cellJ - 1; j <= cellJ + 1; j++) {
+            if (i === cellI && j === cellJ) continue
+            if (j < 0 || j >= board[0].length) continue
+            board[i][j].i = i
+            board[i][j].j = j
+            neighbours.push(board[i][j])
+        }
+    }
+    return neighbours
 }
 
 // changeBoardSize - changes the board size on user selection
@@ -42,7 +67,7 @@ function changeBoardSize(newSize, newMines) {
 // randMines - returns a random cell position
 function randMines(board) {
     return [
-        getRandomInt(0, board.length), 
+        getRandomInt(0, board.length),
         getRandomInt(0, board.length)
     ]
 }
@@ -69,28 +94,4 @@ function startGameClock() {
     }, 1000)
 }
 
-function restartGame() {
-    initGame()
-    toggleModal()
-}
 
-// toggleModal - displays or hide the end of game message modal
-function toggleModal(message, newBestScore) {
-    var elModalWrapper = document.querySelector('.modal-wrapper')
-
-    var elH2ModalContent = document.querySelector('.modal .content')
-    elH2ModalContent.innerHTML = ''
-
-    var elMessage = document.createElement('h2')
-    elMessage.innerText = message
-    elH2ModalContent.appendChild(elMessage)
-
-    if (newBestScore) {
-        var elBestScore = document.createElement('div')
-        elBestScore.classList.add('best-score')
-        elBestScore.innerText = `New best score: ${formatTime(getScore(gLevel.SIZE))}`
-        elH2ModalContent.appendChild(elBestScore)
-    }
-
-    elModalWrapper.classList.toggle('show')
-}

@@ -2,47 +2,47 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     text-align: center;
+    min-height: 100vh;
+    flex-direction: column;
     margin: 0 auto;
+    
 }
 
-.cell:hover {
+ .cell:hover {
     cursor: pointer;
 }
 
-.cell:active, .exposed {
+ /* .cell:active, .exposed { 
     background-color:  rgb(165, 165, 165);
     border-style: inset;
-}
+} */
 
-.exposed:hover {
+/* .exposed:hover {
     cursor: default;
-}
+}  */
 
-/* #board {
-    width: 400px;
-    height: 400px;
-    border: 10px solid darkgray;
-    background-color: lightgray;
-
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-#board div {
-    width: 48px;
-    height: 48px;
-    border: 1px solid whitesmoke;
+/* .game-board-contain {
+    margin: 50px auto;
+} */
 
 
-    font-size: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+/* .cell {
+    font-size: 1.5em;
+    width: 2em;
+    height: 2em;
+    border: 1px solid rgb(77, 77, 77);
+    background-color: rgb(144, 144, 144);
+    transition: 350ms;
+} */
 
-.tile-clicked {
-    background-color: darkgray;
+/* .empty-cell {
+    background-color: rgb(93, 93, 93);
+} */
+
+/* .modal {
+    margin: 20px auto;
+    height: 22px;
+    font-size: larger;
 } */
 
 .n1 {
@@ -64,9 +64,9 @@ body {
 
 .n5 {
     color: lightsalmon;
-}
+} */
 
-.n6 {
+.n6 { 
     color: orange;
 }
 
@@ -76,4 +76,91 @@ body {
 
 .n8 {
     color: gold;
+} */
+
+
+* {
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    background-color: rgb(172, 172, 172);
+    text-align: center;
+} */
+
+/* h1 {
+    background-color: rgba(44, 179, 136, 0.467);
+    
+} */
+
+.modal {
+    margin: 20px auto;
+    /* height: 22px; */
+    font-size: larger;
+}
+
+.button{
+    color: rgb(0, 0, 0);
+    background-color: rgba(225, 255, 117, 0.567);
+    font-size: 1.5vh;
+    font-weight: 600;
+}
+
+.game-controllers {
+    background-color: rgba(19, 230, 222, 0.467);
+}
+
+.game-info {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    width: 600px;
+    
+}
+.game-mode-btns {
+    margin: 0 5vh;
+}
+
+.reset-game {
+    margin: 0 5vh;
+    width: 2em;
+    height: 2em;
+    border-radius: 40%;
+}
+
+.board-container {
+    margin: 50px auto;
+}
+
+
+.cell {
+    font-size: 1em;
+    width: 1.5em;
+    height: 1.5em;
+    border: 1px solid rgb(66, 65, 65);
+    background-color: rgb(174, 174, 174);
+    transition: 0.45s;
+}
+
+.empty-cell {
+    background-color: rgb(125, 125, 125);
+}
+
+.cell:hover, .reset-game:hover {
+    cursor: pointer;
+    background-color: rgb(227, 125, 125);
+}
+
+footer {
+    margin-top: auto;
+    height: 40px;
+    padding: 15px;
+    background-color: rgba(19, 230, 222, 0.467);
+    
+    font-size: 25px;
 }
