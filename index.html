@@ -1,41 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mine sweeper</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Minesweeper</title>
+    <link rel="stylesheet" href="css\style.css">
 </head>
-<body onload="onInit()">
-    <h1>Mine sweeper</h1>
 
-    
-    <div class="game-controllers">
-        <div class="game-info">
-            <div class="game-mode-btns">
-                <button id="btn-easy" onclick="onSetGameLevel('easy')"><span class="button">Easy</span></button>
-                <button id="btn-medium" onclick="onSetGameLevel('medium')"><span class="button">Medium</span></button>
-                <button id="btn-hard" onclick="onSetGameLevel('hard')"><span class="button">Hard</span></button>
+<body onload="onInit()">
+    <!-- <h1>minesweeper</h1>
+    <h2>Mines: <span id="mines-count">0</span></h2>
+
+    <div id="board"> </div> -->
+
+    <!-- <div class="container">
+        <div class="grid"></div>
+        <div>Flag-left: <span id="flag-left"></span></div>
+        <div id="result"></div>
+    </div> -->
+
+    <div class="background"></div>
+
+    <div class="game">
+        <div class="header">
+            <h1 class="title">Mine Sweeper</h1>
+
+            <div class="size-selector">
+                <label>Choose board size:</label>
+                <button name="difficulty" onclick="changeBoardSize(4, 2)">4</button>
+                <!-- <button name="difficulty" onclick="changeBoardSize(8, 12)">8</button>
+                <button name="difficulty" onclick="changeBoardSize(12, 30)">12</button> -->
             </div>
-            <img class="reset-game" src="img/Smiley.jpg" alt="Smiley" onclick="resetGame()">
-            <h2 class="timer">Time: <span>00:00</span></h2>
-            <h2 class="lives">Lives: <span>0</span></h2>
-            <div class="modal"></div>
+
+            <div class="information">
+                <h2 class="marked">Marked: <span>0</span></h2>
+                <h2 class="timer">Time: <span>00:00</span></h2>
+                <h2 class="lives">Lives: <span>0</span></h2>
+            </div>
+
+            <div class="scores">
+                <table>
+                    <thead>
+                        <!-- <th>Level</th>
+                        <th>Best Score</th> -->
+                    </thead>
+                    <tbody>
+                        <!-- Populated from JS -->
+                    </tbody>
+                </table>
+            </div>
+
+            <button onclick="onInit()" class="smiley"></button>
+        </div>
+
+        <div class="board-container"></div>
+
+    </div>
+
+    <div class="modal-wrapper">
+        <div class="modal">
+            <div class="content"></div>
+            <div class="modal-buttons">
+                <button onclick="toggleModal()">Close</button>
+                <button onclick="restartGame()">Play again</button>
+            </div>
         </div>
     </div>
 
-    <table class="board-container">
-        <tbody class="game-board"></tbody>
-    </table>
-    
+    <!-- <script src="js/score.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/main.js"></script> -->
+
+
+    <script src="js/utils.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/score.js"></script>
 
     <footer>
         <div class="copyrights">© Gregori Krol 2024</div>
     </footer>
-    
-    <script src="js/utils.js"></script>
-    <script src="js/game.js"></script>
-    <script src="js/level.js"></script>
-    <script src="js/score.js"></script>
 </body>
+
 </html>
