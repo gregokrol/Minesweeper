@@ -34,7 +34,6 @@ function onInit() {
     renderBoard(gBoard)
     initializeClickListeners()
     renderScoreTable()
-    toGoDarkMode()
     gGame.isOn = true
 }
 

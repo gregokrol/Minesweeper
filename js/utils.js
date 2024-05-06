@@ -90,13 +90,9 @@ function startGameClock() {
     }, 1000)
 }
 
-function toGoDarkMode() {
-    var element = document.body;
-    element.classList.toggle("dark-mode");
+function toGoDarkMode(light) {
+    if (light === 'light') {
+        var element = document.body
+        element.classList.toggle("dark-mode")
+    }
 }
-
-// function getinnerHTML() {
-//     var text = document.getElementById('light').innerText
-//     element = document.getElementById('Dark').innerText
-
-// }
