@@ -1,6 +1,6 @@
 * {
     box-sizing: border-box;
-    font-family:"Comic Sans MS", cursive, sans-serif;
+    font-family: "Comic Sans MS", cursive, sans-serif;
 }
 
 body {
@@ -22,7 +22,7 @@ button {
     border-radius: 10px;
 }
 
-button:hover{
+button:hover {
     cursor: pointer;
     transition: 0.5s;
     background-color: rgba(175, 199, 92, 0.567);
@@ -30,21 +30,24 @@ button:hover{
 
 table {
     margin: 0 auto;
+    margin-left: 1.5em;
+}
+
+.dark-mode {
+    background-color: #091540;
+    color: white;
 }
 
 .scores table {
-    font-size: 22px;
-    letter-spacing: 0px;
-    word-spacing: 0px;
+    font-size: 20px;
     color: #000000;
     font-weight: 700;
     text-decoration: none solid rgb(129, 129, 129);
     font-style: italic;
-    font-variant: normal;
     text-transform: capitalize;
-    width: 365px;
+    width: 350px;
     border: 1px solid #000000;
-    margin-top: 1em;
+    margin-top: 1.5em;
 }
 
 .scores table th {
@@ -62,10 +65,10 @@ table {
 }
 
 .cell {
-    font-size: 1em;
+    font-size: 1.25em;
     width: 1.5em;
     height: 1.5em;
-    border: 1px solid rgb(66, 65, 65);
+    border: 1.5px solid rgb(130, 130, 130);
     background-color: rgb(174, 174, 174);
     transition: 0.45s;
 }
@@ -92,8 +95,9 @@ table {
 .game-info {
     display: flex;
     align-items: center;
+    font-size: 15px;
     margin: 0 auto;
-    width: 250px;
+    width: 200px;
 }
 
 /* td.cell.cell{
@@ -113,7 +117,7 @@ table {
 }
 
 .board-container {
-    margin: 50px auto;
+    margin: -7.8em auto;
 }
 
 footer {

@@ -1,9 +1,7 @@
 'use strict'
 
 // Const
-// const MINE_IMG = '<img src="img/mine.jpg" />'
-const FLAG = '<img src="img/flag.jpg"/>'
-//' 🚩'
+const FLAG = ' 🚩'
 const BOMB = '💣'
 const EMPTY = ' '
 const elLives = document.querySelector('.lives')
@@ -36,7 +34,7 @@ function onInit() {
     renderBoard(gBoard)
     initializeClickListeners()
     renderScoreTable()
-
+    toGoDarkMode()
     gGame.isOn = true
 }
 

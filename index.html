@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mine sweeper</title>
+    <title>Mine-Sweeper</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body onload="onInit()">
-    <h1>Mine sweeper</h1>
+    <h1>Mine-Sweeper</h1>
 
 
     <div class="game-controllers">
@@ -17,6 +17,7 @@
             <button name="difficulty" onclick="onSetGameLevel('easy')"><span class="button">Easy</span></button>
             <button name="difficulty" onclick="onSetGameLevel('medium')"><span class="button">Medium</span></button>
             <button name="difficulty" onclick="onSetGameLevel('hard')"><span class="button">Hard</span></button>
+            <button type="checkbox" id="lightMode" onclick="toGoDarkMode()"><span class="switch">Light</span></button>
         </div>
 
         <div class="game-info">
@@ -41,8 +42,8 @@
         <tbody class="game-board"></tbody>
     </table>
 
-<!-- Don't Change the div "modal" -->
-    <div class="modal"></div> 
+    <!-- Don't Change the div "modal" -->
+    <div class="modal"></div>
 
     <footer>
         <div class="copyrights">© Gregori Krol 2024</div>

@@ -30,9 +30,9 @@ function shuffleArr(arr) {
 }
 
 function renderCell(location, value) {
-	const cellSelector = '.' + getClassName(location)
-	const elCell = document.querySelector(cellSelector)
-	elCell.innerHTML = value
+    const cellSelector = '.' + getClassName(location)
+    const elCell = document.querySelector(cellSelector)
+    elCell.innerHTML = value
 }
 
 function disableBoardTemporarily(timeInMs) {
@@ -90,4 +90,13 @@ function startGameClock() {
     }, 1000)
 }
 
+function toGoDarkMode() {
+    var element = document.body;
+    element.classList.toggle("dark-mode");
+}
 
+// function getinnerHTML() {
+//     var text = document.getElementById('light').innerText
+//     element = document.getElementById('Dark').innerText
+
+// }
