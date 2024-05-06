@@ -57,14 +57,12 @@ function getNeighbours(board, cellI, cellJ) {
     return neighbours
 }
 
-// changeBoardSize - changes the board size on user selection
 function changeBoardSize(newSize, newMines) {
     gLevel.SIZE = newSize
     gLevel.MINES = newMines
     initGame()
 }
 
-// randMines - returns a random cell position
 function randMines(board) {
     return [
         getRandomInt(0, board.length),
@@ -76,7 +74,6 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - 1 - min)) + min
 }
 
-// formatTime - formats seconds into `00:00` time format
 function formatTime(timeSeconds) {
     var minutes = Math.floor((timeSeconds) / 60)
     var seconds = Math.floor((timeSeconds) % 60)
@@ -86,7 +83,6 @@ function formatTime(timeSeconds) {
     return `${minutes}:${seconds}`
 }
 
-// startGameClock - sets the game clock update interval
 function startGameClock() {
     gTimeInterval = setInterval(function () {
         var timeSeconds = Math.floor((Date.now() - gStartTime) / 1000)

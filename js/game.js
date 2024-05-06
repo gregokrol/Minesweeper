@@ -1,9 +1,16 @@
 'use strict'
 
 // Const
-const FLAG = ' 🚩'
+// const MINE_IMG = '<img src="img/mine.jpg" />'
+const FLAG = '<img src="img/flag.jpg"/>'
+//' 🚩'
 const BOMB = '💣'
 const EMPTY = ' '
+const elLives = document.querySelector('.lives')
+const elTimer = document.querySelector('.timer')
+// const elSmiley = document.querySelector('.smiley')
+// const elMarked = document.querySelector('.marked')
+const defaultLivesCounter = 3
 
 // Global
 var gBoard
@@ -28,6 +35,7 @@ function onInit() {
     gBoard = buildBoard()
     renderBoard(gBoard)
     initializeClickListeners()
+    renderScoreTable()
 
     gGame.isOn = true
 }
@@ -82,10 +90,10 @@ function renderCell(rowIdx, colIdx, value) {
 function colorDigits(elCell, value) {
     switch (value) {
         case 1:
-            elCell.style.color = '#00b2ca'
+            elCell.style.td.cell.cell = '#00b2ca'
             break
         case 2:
-            elCell.style.color = '#43aa8b'
+            elCell.style.td.cell.cell = '#43aa8b'
             break
         case 3:
             elCell.style.color = '#ae2012'
@@ -274,3 +282,4 @@ function resetGame() {
     elBoard.removeEventListener('contextmenu', flagCell)
     onInit()
 }
+

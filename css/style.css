@@ -1,54 +1,133 @@
+* {
+    box-sizing: border-box;
+    font-family:"Comic Sans MS", cursive, sans-serif;
+}
+
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
     font-weight: bold;
     text-align: center;
     min-height: 100vh;
     flex-direction: column;
     margin: 0 auto;
-    
 }
 
- .cell:hover {
+button {
+    margin-right: 10px;
+    margin-bottom: 10px;
+    color: rgb(0, 0, 0);
+    background-color: rgba(225, 255, 117, 0.567);
+    font-size: 1.5vh;
+    font-weight: 600;
+    border-radius: 10px;
+}
+
+button:hover{
     cursor: pointer;
+    transition: 0.5s;
+    background-color: rgba(175, 199, 92, 0.567);
 }
 
- /* .cell:active, .exposed { 
-    background-color:  rgb(165, 165, 165);
-    border-style: inset;
+table {
+    margin: 0 auto;
+}
+
+.scores table {
+    font-size: 22px;
+    letter-spacing: 0px;
+    word-spacing: 0px;
+    color: #000000;
+    font-weight: 700;
+    text-decoration: none solid rgb(129, 129, 129);
+    font-style: italic;
+    font-variant: normal;
+    text-transform: capitalize;
+    width: 365px;
+    border: 1px solid #000000;
+    margin-top: 1em;
+}
+
+.scores table th {
+    text-align: center;
+    background-color: #c5c5c5;
+    padding: 5px;
+}
+
+.scores table td {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    padding: 5px;
+    font-size: 13px;
+    background-color: rgba(197, 195, 195, 0.1);
+}
+
+.cell {
+    font-size: 1em;
+    width: 1.5em;
+    height: 1.5em;
+    border: 1px solid rgb(66, 65, 65);
+    background-color: rgb(174, 174, 174);
+    transition: 0.45s;
+}
+
+.empty-cell {
+    background-color: rgb(125, 125, 125);
+}
+
+.cell:hover,
+.reset-game:hover {
+    cursor: pointer;
+    background-color: rgb(227, 125, 125);
+}
+
+.modal {
+    margin: 20px auto;
+    font-size: larger;
+}
+
+.game-controllers {
+    background-color: rgba(19, 230, 222, 0.467);
+}
+
+.game-info {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    width: 250px;
+}
+
+/* td.cell.cell{
+
+    color: aqua;
 } */
 
-/* .exposed:hover {
-    cursor: default;
-}  */
+.difficult-select {
+    margin: 5px;
+}
 
-/* .game-board-contain {
-    margin: 50px auto;
-} */
-
-
-/* .cell {
-    font-size: 1.5em;
+.reset-game {
+    margin: 0;
     width: 2em;
     height: 2em;
-    border: 1px solid rgb(77, 77, 77);
-    background-color: rgb(144, 144, 144);
-    transition: 350ms;
-} */
+    border-radius: 40%;
+}
 
-/* .empty-cell {
-    background-color: rgb(93, 93, 93);
-} */
+.board-container {
+    margin: 50px auto;
+}
 
-/* .modal {
-    margin: 20px auto;
-    height: 22px;
-    font-size: larger;
-} */
+footer {
+    margin-top: auto;
+    height: 55px;
+    padding: 15px;
+    background-color: rgba(19, 230, 222, 0.467);
+    font-size: 25px;
+}
 
+/* Number cell color */
 .n1 {
     color: blue;
 }
-
 
 .n2 {
     color: red;
@@ -64,9 +143,9 @@ body {
 
 .n5 {
     color: lightsalmon;
-} */
+}
 
-.n6 { 
+.n6 {
     color: orange;
 }
 
@@ -76,91 +155,4 @@ body {
 
 .n8 {
     color: gold;
-} */
-
-
-* {
-    box-sizing: border-box;
-    font-family: 'Courier New', Courier, monospace;
-}
-
-/* body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    margin: 0;
-    background-color: rgb(172, 172, 172);
-    text-align: center;
-} */
-
-/* h1 {
-    background-color: rgba(44, 179, 136, 0.467);
-    
-} */
-
-.modal {
-    margin: 20px auto;
-    /* height: 22px; */
-    font-size: larger;
-}
-
-.button{
-    color: rgb(0, 0, 0);
-    background-color: rgba(225, 255, 117, 0.567);
-    font-size: 1.5vh;
-    font-weight: 600;
-}
-
-.game-controllers {
-    background-color: rgba(19, 230, 222, 0.467);
-}
-
-.game-info {
-    display: flex;
-    align-items: center;
-    margin: 0 auto;
-    width: 600px;
-    
-}
-.game-mode-btns {
-    margin: 0 5vh;
-}
-
-.reset-game {
-    margin: 0 5vh;
-    width: 2em;
-    height: 2em;
-    border-radius: 40%;
-}
-
-.board-container {
-    margin: 50px auto;
-}
-
-
-.cell {
-    font-size: 1em;
-    width: 1.5em;
-    height: 1.5em;
-    border: 1px solid rgb(66, 65, 65);
-    background-color: rgb(174, 174, 174);
-    transition: 0.45s;
-}
-
-.empty-cell {
-    background-color: rgb(125, 125, 125);
-}
-
-.cell:hover, .reset-game:hover {
-    cursor: pointer;
-    background-color: rgb(227, 125, 125);
-}
-
-footer {
-    margin-top: auto;
-    height: 40px;
-    padding: 15px;
-    background-color: rgba(19, 230, 222, 0.467);
-    
-    font-size: 25px;
 }

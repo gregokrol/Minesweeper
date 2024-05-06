@@ -1,41 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mine sweeper</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body onload="onInit()">
     <h1>Mine sweeper</h1>
 
-    
+
     <div class="game-controllers">
+        <div class="difficult-select">
+            <button name="difficulty" onclick="onSetGameLevel('easy')"><span class="button">Easy</span></button>
+            <button name="difficulty" onclick="onSetGameLevel('medium')"><span class="button">Medium</span></button>
+            <button name="difficulty" onclick="onSetGameLevel('hard')"><span class="button">Hard</span></button>
+        </div>
+
         <div class="game-info">
-            <div class="game-mode-btns">
-                <button id="btn-easy" onclick="onSetGameLevel('easy')"><span class="button">Easy</span></button>
-                <button id="btn-medium" onclick="onSetGameLevel('medium')"><span class="button">Medium</span></button>
-                <button id="btn-hard" onclick="onSetGameLevel('hard')"><span class="button">Hard</span></button>
-            </div>
             <img class="reset-game" src="img/Smiley.jpg" alt="Smiley" onclick="resetGame()">
             <h2 class="timer">Time: <span>00:00</span></h2>
             <h2 class="lives">Lives: <span>0</span></h2>
-            <div class="modal"></div>
         </div>
+    </div>
+
+    <div class="scores">
+        <table>
+            <thead>
+                <th>Level</th>
+                <th>Best Score</th>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
     </div>
 
     <table class="board-container">
         <tbody class="game-board"></tbody>
     </table>
-    
+
+<!-- Don't Change the div "modal" -->
+    <div class="modal"></div> 
 
     <footer>
         <div class="copyrights">© Gregori Krol 2024</div>
     </footer>
-    
+
     <script src="js/utils.js"></script>
     <script src="js/game.js"></script>
     <script src="js/level.js"></script>
     <script src="js/score.js"></script>
 </body>
+
 </html>
