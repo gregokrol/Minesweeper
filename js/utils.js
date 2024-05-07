@@ -74,20 +74,29 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - 1 - min)) + min
 }
 
-function formatTime(timeSeconds) {
-    var minutes = Math.floor((timeSeconds) / 60)
-    var seconds = Math.floor((timeSeconds) % 60)
-    if (minutes < 10) { minutes = `0${minutes}` } else { minutes = `${minutes}` }
-    if (seconds < 10) { seconds = `0${seconds}` } else { seconds = `${seconds}` }
+function startTimer() {
+    var start = Date.now()
+    var elTimer = document.querySelector('.timer')
 
-    return `${minutes}:${seconds}`
+    gTimer = setInterval(() => {
+        const diff = Date.now() - start
+        var secs = parseInt(diff / 1000) % 60
+        var min = Math.floor(diff / 60000)
+
+        var displayTime = `${min.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`
+        elTimer.innerText = `${displayTime}`
+
+    }, 1000);
 }
 
-function startGameClock() {
-    gTimeInterval = setInterval(function () {
-        var timeSeconds = Math.floor((Date.now() - gStartTime) / 1000)
-        elTimer.innerText = formatTime(timeSeconds)
-    }, 1000)
+function stopTimer() {
+    clearInterval(gTimer)
+}
+
+function resetTimer() {
+    stopTimer()
+    var elTimer = document.querySelector('.timer')
+    elTimer.innerText = '00:00'
 }
 
 function toGoDarkMode(light) {

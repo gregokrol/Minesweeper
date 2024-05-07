@@ -19,11 +19,12 @@
             <button name="difficulty" onclick="onSetGameLevel('hard')"><span class="button">Hard</span></button>
             <button id="lightMode" onclick="toGoDarkMode('light')"><span class="switch">Light</span></button>
         </div>
-        
+
         <div class="game-info">
-            <img class="reset-game" src="img/Smiley.jpg" alt="Smiley" onclick="resetGame()">
-            <h2 class="timer">Time: <span>00:00</span></h2>
-            <h2 class="lives">Lives: <span>0</span></h2>
+            <h2><span onclick="onInit()"><img class="reset-game" src="img/Smiley.jpg" alt="Smiley"
+                        onclick="resetGame()"></span></h2>
+            <h2>Time: <span class="timer">00:00</span></h2>
+            <h2>Lives: <span class="lives">❤️❤️❤️</span></h2>
         </div>
     </div>
 
@@ -42,9 +43,10 @@
         <tbody class="game-board"></tbody>
     </table>
 
-<!-- Don't Change the div "modal" -->
-    <div class="modal"></div> 
-
+    <!-- Don't Change the div "modal" -->
+    <box>
+        <div class="modal"></div>
+    </box>
     <footer>
         <div class="copyrights">© Gregori Krol 2024</div>
     </footer>
@@ -53,6 +55,7 @@
     <script src="js/game.js"></script>
     <script src="js/level.js"></script>
     <script src="js/score.js"></script>
+    <script src="js/lives.js"></script>
 </body>
 
 </html>

@@ -8,25 +8,9 @@ function setNewScore(scoreSeconds) {
     localStorage.setItem(`score-${gLevel.SIZE}`, scoreSeconds)
 }
 
-function getGameDurationSeconds() {
-    return (Date.now() - gStartTime) / 1000
-}
-
-function checkBestScore() {
-    var duration = getGameDurationSeconds()
-    var bestScore = getScore(gLevel.SIZE)
-
-    if (!bestScore || duration < bestScore) {
-        setNewScore(duration)
-        renderScoreTable()
-        return true
-    }
-    return false
-}
-
 function renderScoreTable() {
     const boardSizes = ['Easy', 'Medium', 'Hard']
-    
+
     var tableBody = document.querySelector('.scores tbody')
     tableBody.innerHTML = ''
 

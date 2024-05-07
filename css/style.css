@@ -4,6 +4,9 @@
 }
 
 body {
+    background-color: aquamarine;
+    /* background-image: url('../img/background1.jpg'); */
+    background-size: 100% auto;
     display: flex;
     font-weight: bold;
     text-align: center;
@@ -42,17 +45,16 @@ table {
     font-size: 20px;
     color: #000000;
     font-weight: 700;
-    text-decoration: none solid rgb(129, 129, 129);
     font-style: italic;
     text-transform: capitalize;
     width: 350px;
-    border: 1px solid #000000;
+    border: 1px solid #707070;
     margin-top: 1.5em;
 }
 
 .scores table th {
     text-align: center;
-    background-color: #c5c5c5;
+    background-color: #aaaaaa;
     padding: 5px;
 }
 
@@ -61,7 +63,7 @@ table {
     text-align: center;
     padding: 5px;
     font-size: 13px;
-    background-color: rgba(197, 195, 195, 0.1);
+    background-color: rgba(215, 215, 215, 0.7);
 }
 
 .cell {
@@ -89,7 +91,7 @@ table {
 }
 
 .game-controllers {
-    background-color: rgba(19, 230, 222, 0.467);
+    background-color: rgba(19, 230, 222, 0.75);
 }
 
 .game-info {
@@ -100,10 +102,10 @@ table {
     width: 200px;
 }
 
-/* td.cell.cell{
+td.cell.cell{
 
-    color: aqua;
-} */
+    color: red;
+}
 
 .difficult-select {
     margin: 5px;
@@ -117,9 +119,12 @@ table {
 }
 
 .board-container {
-    margin: -7.8em auto;
+    margin: 0em auto;
 }
 
+.modal{
+    margin-top: 1em auto;
+}
 footer {
     margin-top: auto;
     height: 55px;

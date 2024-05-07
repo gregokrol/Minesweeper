@@ -4,37 +4,37 @@
 const FLAG = ' 🚩'
 const BOMB = '💣'
 const EMPTY = ' '
-const elLives = document.querySelector('.lives')
-const elTimer = document.querySelector('.timer')
-// const elSmiley = document.querySelector('.smiley')
-// const elMarked = document.querySelector('.marked')
+
+// const elLives = document.querySelector('.lives')
 const defaultLivesCounter = 3
 
 // Global
 var gBoard
-var gStartTime
-var gTimeInterval
-var gLivesCounter
-var gCountMinesMarked = 0
+var gTimer
+var gTimerInterval
+// var gLivesCounter
+// var gCountMinesMarked = 0
 
 var gGame = {
     isOn: false,
+    isWin: false,
     isFirstTurn: true,
     shownCount: 0,
-    numsCount: 0,
+    // numsCount: 0,
     markedCount: 0,
     secsPassed: 0,
+    lives: 3,
     mines: [],
     flaggedCells: []
 }
 
 function onInit() {
-
     gBoard = buildBoard()
     renderBoard(gBoard)
     initializeClickListeners()
     renderScoreTable()
     gGame.isOn = true
+
 }
 
 function buildBoard() {
@@ -50,7 +50,7 @@ function buildBoard() {
                 isMine: false,
                 isShown: false,
                 isMarked: false,
-                mineNegCount: 0
+                mineCount: 0
             }
         }
     }
@@ -81,36 +81,37 @@ function renderCell(rowIdx, colIdx, value) {
     }
 
     elCell.innerText = value
-}
 
-// TODO: pain numbers in cells
-function colorDigits(elCell, value) {
-    switch (value) {
-        case 1:
-            elCell.style.td.cell.cell = '#00b2ca'
-            break
-        case 2:
-            elCell.style.td.cell.cell = '#43aa8b'
-            break
-        case 3:
-            elCell.style.color = '#ae2012'
-            break
-        case 4:
-            elCell.style.color = '#90be6d'
-            break
-        case 5:
-            elCell.style.color = '#f9c74f'
-            break
-        case 6:
-            elCell.style.color = '#f9844a'
-            break
-        case 7:
-            elCell.style.color = '#f3722c'
-            break
-        case 8:
-            elCell.style.color = '#f94144'
-            break
-    }
+
+    // TODO: pain numbers in cells
+    // function colorDigits(elCell, value) {
+    //     switch (value) {
+    //         case 1:
+    //             elCell.style.td.cell.cell = style.n1
+    //             break
+    //         case 2:
+    //             elCell.style.td.cell.cell = style.n2
+    //             break
+    //         case 3:
+    //             elCell.style.td.cell.cell = style.n3
+    //             break
+    //         case 4:
+    //             elCell.style.td.cell.cell = style.n4
+    //             break
+    //         case 5:
+    //             elCell.style.td.cell.cell = style.n5
+    //             break
+    //         case 6:
+    //             elCell.style.td.cell.cell = style.n6
+    //             break
+    //         case 7:
+    //             elCell.style.td.cell.cell = style.n7
+    //             break
+    //         case 8:
+    //             elCell.style.td.cell.cell = style.n8
+    //             break
+    //     }
+    // }
 }
 
 function setMines(negCells, rowIdx, colIdx) {
@@ -131,7 +132,7 @@ function setMines(negCells, rowIdx, colIdx) {
 
 function setMinesNegCount(board, rowIdx, colIdx) {
 
-    var mineNegCount = 0
+    var mineCount = 0
     var negCells = []
 
     for (var i = rowIdx - 1; i <= rowIdx + 1; i++) {
@@ -143,26 +144,28 @@ function setMinesNegCount(board, rowIdx, colIdx) {
             if (j < 0 || j >= board[0].length) continue
             if (i === rowIdx && j === colIdx) continue
 
-            if (board[i][j].isMine) mineNegCount++
+            if (board[i][j].isMine) mineCount++
             else negCells.push(board[i][j])
         }
     }
 
     if (gGame.isFirstTurn) {
+        startTimer()
         gGame.isFirstTurn = false
         setMines(negCells, rowIdx, colIdx)
+
     }
 
-    board[rowIdx][colIdx].mineNegCount = mineNegCount
+    board[rowIdx][colIdx].mineCount = mineCount
 
-    if (mineNegCount === 0) {
+    if (mineCount === 0) {
         negCells.forEach(cell => {
             if (!cell.isMine) onCellClicked(board, cell.location.i, cell.location.j)
         })
         return ''
     }
 
-    return mineNegCount
+    return mineCount
 }
 
 function onCellClicked(board, rowIdx, colIdx) {
@@ -180,7 +183,7 @@ function onCellClicked(board, rowIdx, colIdx) {
 
     setMinesNegCount(board, rowIdx, colIdx)
 
-    renderCell(rowIdx, colIdx, clickedCell.mineNegCount)
+    renderCell(rowIdx, colIdx, clickedCell.mineCount)
 
 
     checkWin()
@@ -228,7 +231,7 @@ function flagCell(ev) {
 
 function checkWin() {
     const elModal = document.querySelector('.modal')
-
+    var winTime = 0
     if (gLevel.MINES !== gGame.markedCount) return
 
     for (var i = 0; i < gGame.flaggedCells.length; i++) {
@@ -242,8 +245,10 @@ function checkWin() {
             if (!currCell.isShown) return
         }
     }
-
     elModal.innerHTML = 'GREAT, YOU WIN!'
+    gGame.isWin = true
+    gGame.isOn = false
+    stopTimer()
 }
 
 function gameOver() {
@@ -255,8 +260,10 @@ function gameOver() {
 
         renderCell(cellRowIdx, cellColIdx, BOMB)
     }
-    elModal.innerHTML = 'Lose, Maybe next time...'
+    elModal.innerHTML = 'You Lose, Maybe next time...'
+    gGame.isWin = false
     gGame.isOn = false
+    stopTimer()
 }
 
 function resetGame() {
@@ -277,6 +284,7 @@ function resetGame() {
     elModal.innerHTML = ''
 
     elBoard.removeEventListener('contextmenu', flagCell)
+    stopTimer()
+    resetTimer()
     onInit()
 }
-
