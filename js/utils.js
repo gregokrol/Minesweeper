@@ -80,19 +80,21 @@ function getRandomInt(min, max) {
 }
 
 // Timer
+var time
 function startTimer() {
     var start = Date.now()
     var elTimer = document.querySelector('.timer')
 
     gTimer = setInterval(() => {
         const diff = Date.now() - start
-        var secs = parseInt(diff / 1000) % 60
+        var sec = parseInt(diff / 1000) % 60
         var min = Math.floor(diff / 60000)
 
-        var displayTime = `${min.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`
+        var displayTime = `${min.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`
         elTimer.innerText = `${displayTime}`
-
+        time = `${min}`+':'+ `${sec}`
         // console.log(elTimer,"elTimer");
+        console.log(time,'gTime');
     }, 1000);
 
 }

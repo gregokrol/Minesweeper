@@ -84,7 +84,7 @@ function setMines(nonMines, rowIdx, colIdx) {
         var randCell = gBoard[getRandomInt(0, gLevel.SIZE)][getRandomInt(0, gLevel.SIZE)]
 
         if (gGame.mines.includes(randCell.location) || nonMines.includes(randCell) || randCell === gBoard[rowIdx][colIdx]) {
-           console.log(randCell.location,'randCell.location',randCell,'randCell',gBoard[rowIdx][colIdx],'gBoard[rowIdx][colIdx]');
+        //    console.log(randCell.location,'randCell.location',randCell,'randCell',gBoard[rowIdx][colIdx],'gBoard[rowIdx][colIdx]');
             i--
             continue
         }
@@ -211,6 +211,7 @@ function checkWin() {
         elImage.setAttribute('src', imageSrc)
     }
     elModal.innerHTML = 'GREAT, YOU WIN!'
+    toggleModal(checkBestScore())
     gGame.isOn = false
     stopTimer()
 }

@@ -1,12 +1,60 @@
 'use strict'
 
-function getScore(level) {
-    return localStorage.getItem(`score-${level}`)
+function getScore(gLevel) {
+    return localStorage.getItem(`score-${gLevel}`)
 }
 
-function setNewScore(scoreSeconds) {
-    localStorage.setItem(`score-${gLevel.SIZE}`, scoreSeconds)
+function setNewScore(timer) {
+    localStorage.setItem(`score-${gLevel.SIZE}`, timer)
 }
+
+function checkBestScore() {
+    var duration = time
+    var bestScore = getScore(gLevel.SIZE)
+    if (!bestScore || duration < bestScore) {
+        setNewScore(duration)
+        renderScoreTable()
+        console.log('true');
+        return true
+    }
+
+    console.log('false');
+    return false
+}
+
+// function toggleModal(newBestScore) {
+//     var elModalWrapper = document.querySelector('.modal-wrapper')
+
+//     var elH2ModalContent = document.querySelector('.modal .content')
+            // elH2ModalContent.innerHTML += ''
+
+//     if (newBestScore) {
+//         var elBestScore = document.createElement('div')
+//         elBestScore.classList.add('best-score')
+//         elBestScore.innerText = `New best score: ${displayTime`${getScore(gLevel.SIZE)}`}`
+//         elH2ModalContent.appendChild(elBestScore)
+//     }
+
+//     elModalWrapper.classList.toggle('show')
+// }
+
+function toggleModal(newBestScore, gLevel) {
+    const elModalWrapper = document.querySelector('.modal-wrapper');
+
+    const elH2ModalContent = document.querySelector('.modal .content');
+    elH2ModalContent.innerHTML = ''; // Clear previous content
+
+    if (newBestScore) {
+        const elBestScore = document.createElement('div');
+        elBestScore.classList.add('best-score');
+        const bestScoreTime = getScore(gLevel.SIZE);
+        elBestScore.innerText = `New best score: ${bestScoreTime}`;
+        elH2ModalContent.appendChild(elBestScore);
+    }
+
+    elModalWrapper.classList.toggle('show');
+}
+
 
 function renderScoreTable() {
     const boardSizes = ['Easy', 'Medium', 'Hard']
