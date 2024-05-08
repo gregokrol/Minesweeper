@@ -254,7 +254,7 @@ function resetGame() {
     }
 
     const elImage = document.querySelector('.reset-game')
-    elImage.setAttribute('src', 'img/Smiley.jpg')
+    elImage.setAttribute('src', 'img/smiley.jpg')
 
     elModal.innerHTML = ''
 
