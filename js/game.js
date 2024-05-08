@@ -77,13 +77,14 @@ function renderCell(rowIdx, colIdx, value) {
     elCell.innerText = value
 }
 
-function setMines(negCells, rowIdx, colIdx) {
+function setMines(nonMines, rowIdx, colIdx) {
 
     for (var i = 0; i < gLevel.MINES; i++) {
 
         var randCell = gBoard[getRandomInt(0, gLevel.SIZE)][getRandomInt(0, gLevel.SIZE)]
 
-        if (gGame.mines.includes(randCell.location) || negCells.includes(randCell) || randCell === gBoard[rowIdx][colIdx]) {
+        if (gGame.mines.includes(randCell.location) || nonMines.includes(randCell) || randCell === gBoard[rowIdx][colIdx]) {
+           console.log(randCell.location,'randCell.location',randCell,'randCell',gBoard[rowIdx][colIdx],'gBoard[rowIdx][colIdx]');
             i--
             continue
         }
@@ -93,10 +94,10 @@ function setMines(negCells, rowIdx, colIdx) {
     }
 }
 
-function setMinesNegCount(board, rowIdx, colIdx) {
+function adjacentMinesAndnonMines(board, rowIdx, colIdx) {
 
     var mineCount = 0
-    var negCells = []
+    var nonMines = []
 
     for (var i = rowIdx - 1; i <= rowIdx + 1; i++) {
 
@@ -108,21 +109,21 @@ function setMinesNegCount(board, rowIdx, colIdx) {
             if (i === rowIdx && j === colIdx) continue
 
             if (board[i][j].isMine) mineCount++
-            else negCells.push(board[i][j])
+            else nonMines.push(board[i][j])
         }
     }
 
     if (gGame.isFirstTurn) {
         startTimer()
         gGame.isFirstTurn = false
-        setMines(negCells, rowIdx, colIdx)
+        setMines(nonMines, rowIdx, colIdx)
 
     }
 
     board[rowIdx][colIdx].mineCount = mineCount
 
     if (mineCount === 0) {
-        negCells.forEach(cell => {
+        nonMines.forEach(cell => {
             if (!cell.isMine) onCellClicked(board, cell.location.i, cell.location.j)
         })
         return ''
@@ -143,7 +144,7 @@ function onCellClicked(board, rowIdx, colIdx) {
 
     gGame.shownCount++
 
-    setMinesNegCount(board, rowIdx, colIdx)
+    adjacentMinesAndnonMines(board, rowIdx, colIdx)
 
     renderCell(rowIdx, colIdx, clickedCell.mineCount)
 

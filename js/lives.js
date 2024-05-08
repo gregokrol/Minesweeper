@@ -9,7 +9,8 @@ function stillLive() {
         if (elLives.innerText.length > 0) {
             elLives.innerText = elLives.innerText.slice(0, -2)
         }
-
+        
+        alert('Oops, you exploded. You have left' + ' ' + gGame.lives + ' ' + 'life')
         gGame.lives--
 
     } else return gameOver()
