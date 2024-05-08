@@ -17,16 +17,18 @@
             <button name="difficulty" onclick="onSetGameLevel('easy')"><span class="button">Easy</span></button>
             <button name="difficulty" onclick="onSetGameLevel('medium')"><span class="button">Medium</span></button>
             <button name="difficulty" onclick="onSetGameLevel('hard')"><span class="button">Hard</span></button>
-            <button id="lightMode" onclick="toGoDarkMode('light')"><span class="switch">Light</span></button>
-        </div>
+            <button id="lightMode" onclick="toggleMode()">Light</button>
+            <!-- <label class="switch"><input type="checkbox"><span class="slider round">Light</span></label> -->
 
-        <div class="game-info">
-            <h2><span onclick="onInit()"><img class="reset-game" src="img/Smiley.jpg" alt="Smiley"
-                        onclick="resetGame()"></span></h2>
-            <h2>Time: <span class="timer">00:00</span></h2>
-            <h2>Lives: <span class="lives">❤️❤️❤️</span></h2>
         </div>
-    </div>
+        
+        <div class="game-info">
+            <h2><span onclick="onInit()">
+                <h2>Time: <span class="timer">00:00</span></h2>
+                <h2>Lives: <span class="lives">❤️❤️❤️</span></h2>
+                <img class="reset-game" src="img/Smiley.jpg" alt="Smiley" onclick="resetGame()"></span></h2>
+            </div>
+        </div>
 
     <div class="scores">
         <table>
@@ -47,6 +49,7 @@
     <box>
         <div class="modal"></div>
     </box>
+
     <footer>
         <div class="copyrights">© Gregori Krol 2024</div>
     </footer>

@@ -42,16 +42,20 @@ function disableBoardTemporarily(timeInMs) {
     }, timeInMs)
 }
 
+// Neighbours
 function getNeighbours(board, cellI, cellJ) {
     var neighbours = []
     for (var i = cellI - 1; i <= cellI + 1; i++) {
         if (i < 0 || i >= board.length) continue
+
         for (var j = cellJ - 1; j <= cellJ + 1; j++) {
             if (i === cellI && j === cellJ) continue
             if (j < 0 || j >= board[0].length) continue
-            board[i][j].i = i
-            board[i][j].j = j
-            neighbours.push(board[i][j])
+            var neighborCell = { ...board[i][j] }
+
+            neighborCell.i = i
+            neighborCell.j = j
+            neighbours.push(neighborCell)
         }
     }
     return neighbours
@@ -63,6 +67,7 @@ function changeBoardSize(newSize, newMines) {
     initGame()
 }
 
+// Rand Mine Location
 function randMines(board) {
     return [
         getRandomInt(0, board.length),
@@ -74,6 +79,7 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - 1 - min)) + min
 }
 
+// Timer
 function startTimer() {
     var start = Date.now()
     var elTimer = document.querySelector('.timer')
@@ -86,7 +92,9 @@ function startTimer() {
         var displayTime = `${min.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`
         elTimer.innerText = `${displayTime}`
 
+        console.log(elTimer,"elTimer");
     }, 1000);
+
 }
 
 function stopTimer() {
@@ -99,9 +107,30 @@ function resetTimer() {
     elTimer.innerText = '00:00'
 }
 
-function toGoDarkMode(light) {
-    if (light === 'light') {
-        var element = document.body
-        element.classList.toggle("dark-mode")
+// Dark Mode
+function toggleMode() {
+    const currentMode = localStorage.getItem('mode')
+    const newMode = (currentMode === 'light' ? 'dark' : 'light')
+
+    localStorage.setItem('mode', newMode)
+
+    applyMode(newMode)
+}
+
+function applyMode(mode) {
+    const switchButton = document.getElementById('lightMode')
+    if (mode === 'dark') {
+        switchButton.textContent = 'Light'
+        document.body.classList.add('dark-mode')
+    } else {
+        switchButton.textContent = 'Dark'
+        document.body.classList.remove('dark-mode')
     }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const storedMode = localStorage.getItem('mode')
+    if (storedMode) {
+        applyMode(storedMode)
+    }
+})

@@ -1,11 +1,17 @@
 'use strict'
 
-// const LIFE = `<img src="img/live.jpg" alt="lives"/>`
+const LIFE = '❤️'
 
-// for (var i = 0; i < 3; i++) {
-//     var strHTML = ''
+function stillLive() {
+    if (gGame.lives > 0) {
+        var elLives = document.querySelector('.lives')
 
-//     var elLives = document.querySelector('.lives')
-//     strHTML += LIFE
-//     elLives.innerText += strHTML
-// }
+        if (elLives.innerText.length > 0) {
+            elLives.innerText = elLives.innerText.slice(0, -2)
+        }
+
+        gGame.lives--
+
+    } else return gameOver()
+}
+

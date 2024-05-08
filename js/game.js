@@ -5,25 +5,19 @@ const FLAG = ' 🚩'
 const BOMB = '💣'
 const EMPTY = ' '
 
-// const elLives = document.querySelector('.lives')
-const defaultLivesCounter = 3
-
 // Global
 var gBoard
 var gTimer
 var gTimerInterval
-// var gLivesCounter
-// var gCountMinesMarked = 0
 
 var gGame = {
     isOn: false,
     isWin: false,
     isFirstTurn: true,
     shownCount: 0,
-    // numsCount: 0,
     markedCount: 0,
     secsPassed: 0,
-    lives: 3,
+    lives: 2,
     mines: [],
     flaggedCells: []
 }
@@ -81,37 +75,6 @@ function renderCell(rowIdx, colIdx, value) {
     }
 
     elCell.innerText = value
-
-
-    // TODO: pain numbers in cells
-    // function colorDigits(elCell, value) {
-    //     switch (value) {
-    //         case 1:
-    //             elCell.style.td.cell.cell = style.n1
-    //             break
-    //         case 2:
-    //             elCell.style.td.cell.cell = style.n2
-    //             break
-    //         case 3:
-    //             elCell.style.td.cell.cell = style.n3
-    //             break
-    //         case 4:
-    //             elCell.style.td.cell.cell = style.n4
-    //             break
-    //         case 5:
-    //             elCell.style.td.cell.cell = style.n5
-    //             break
-    //         case 6:
-    //             elCell.style.td.cell.cell = style.n6
-    //             break
-    //         case 7:
-    //             elCell.style.td.cell.cell = style.n7
-    //             break
-    //         case 8:
-    //             elCell.style.td.cell.cell = style.n8
-    //             break
-    //     }
-    // }
 }
 
 function setMines(negCells, rowIdx, colIdx) {
@@ -175,8 +138,7 @@ function onCellClicked(board, rowIdx, colIdx) {
 
     if (clickedCell.isShown) return
     if (clickedCell.isMarked) return
-    if (clickedCell.isMine) return gameOver()
-
+    if (clickedCell.isMine) return stillLive()//gameOver()
     clickedCell.isShown = true
 
     gGame.shownCount++
@@ -228,10 +190,9 @@ function flagCell(ev) {
     return false
 }
 
-
 function checkWin() {
     const elModal = document.querySelector('.modal')
-    var winTime = 0
+    // var winTime = 0
     if (gLevel.MINES !== gGame.markedCount) return
 
     for (var i = 0; i < gGame.flaggedCells.length; i++) {
@@ -242,11 +203,13 @@ function checkWin() {
         for (var j = 0; j < gBoard[i].length; j++) {
             const currCell = gBoard[i][j]
             if (currCell.isMine) continue
-            if (!currCell.isShown) return
         }
+        gGame.isWin = true
+        const imageSrc = '../img/win.jpg'
+        const elImage = document.querySelector('.reset-game')
+        elImage.setAttribute('src', imageSrc)
     }
     elModal.innerHTML = 'GREAT, YOU WIN!'
-    gGame.isWin = true
     gGame.isOn = false
     stopTimer()
 }
@@ -259,9 +222,13 @@ function gameOver() {
         const cellColIdx = gGame.mines[i].j
 
         renderCell(cellRowIdx, cellColIdx, BOMB)
+        gGame.isWin = false
+        const imageSrc = '../img/lose.jpg'
+        const elImage = document.querySelector('.reset-game')
+        elImage.setAttribute('src', imageSrc)
     }
+
     elModal.innerHTML = 'You Lose, Maybe next time...'
-    gGame.isWin = false
     gGame.isOn = false
     stopTimer()
 }
@@ -270,16 +237,23 @@ function resetGame() {
     const elModal = document.querySelector('.modal')
     const elBoard = document.querySelector('.game-board')
 
+    var elLives = document.querySelector('.lives')
+    elLives.innerText = '❤️❤️❤️'
+
     gGame = {
         isOn: false,
+        isWin: false,
         isFirstTurn: true,
         shownCount: 0,
-        numsCount: 0,
         markedCount: 0,
         secsPassed: 0,
+        lives: 2,
         mines: [],
         flaggedCells: []
     }
+
+    const elImage = document.querySelector('.reset-game')
+    elImage.setAttribute('src', 'img/Smiley.jpg')
 
     elModal.innerHTML = ''
 

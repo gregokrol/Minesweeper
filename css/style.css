@@ -5,7 +5,7 @@
 
 body {
     background-color: aquamarine;
-    /* background-image: url('../img/background1.jpg'); */
+    /* background-image: url('../img/background.jpg'); */
     background-size: 100% auto;
     display: flex;
     font-weight: bold;
@@ -97,9 +97,10 @@ table {
 .game-info {
     display: flex;
     align-items: center;
-    font-size: 15px;
+    justify-content: space-between;
+    font-size: 12px;
     margin: 0 auto;
-    width: 200px;
+    width: 35ex;
 }
 
 td.cell.cell{
@@ -125,6 +126,7 @@ td.cell.cell{
 .modal{
     margin-top: 1em auto;
 }
+
 footer {
     margin-top: auto;
     height: 55px;
