@@ -206,7 +206,7 @@ function checkWin() {
             if (currCell.isMine) continue
         }
         gGame.isWin = true
-        const imageSrc = '../img/win.jpg'
+        const imageSrc = 'img/win.jpg'
         const elImage = document.querySelector('.reset-game')
         elImage.setAttribute('src', imageSrc)
     }
@@ -224,7 +224,7 @@ function gameOver() {
 
         renderCell(cellRowIdx, cellColIdx, BOMB)
         gGame.isWin = false
-        const imageSrc = '../img/lose.jpg'
+        const imageSrc = 'img/lose.jpg'
         const elImage = document.querySelector('.reset-game')
         elImage.setAttribute('src', imageSrc)
     }
@@ -254,7 +254,7 @@ function resetGame() {
     }
 
     const elImage = document.querySelector('.reset-game')
-    elImage.setAttribute('src', '../img/Smiley.jpg')
+    elImage.setAttribute('src', 'img/Smiley.jpg')
 
     elModal.innerHTML = ''
 
