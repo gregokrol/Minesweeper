@@ -18,37 +18,38 @@
             <button name="difficulty" onclick="onSetGameLevel('medium')"><span class="button">Medium</span></button>
             <button name="difficulty" onclick="onSetGameLevel('hard')"><span class="button">Hard</span></button>
             <button id="lightMode" onclick="toggleMode()">Light</button>
-            <!-- <label class="switch"><input type="checkbox"><span class="slider round">Light</span></label> -->
-
         </div>
 
         <div class="game-info">
             <h2><span onclick="onInit()">
                     <h2>Time: <span class="timer">00:00</span></h2>
                     <h2>Lives: <span class="lives">❤️❤️❤️</span></h2>
+                    <h3>Mine: <span class="mine">2</span></h3>
                     <img class="reset-game" src="img/smiley.jpg" alt="Smiley" onclick="resetGame()">
                 </span></h2>
         </div>
     </div>
-
-    <div class="scores">
-        <table>
-            <thead>
-                <th>Level</th>
-                <th>Best Score</th>
-            </thead>
-            <tbody>
-                <!-- Render Score -->
-            </tbody>
-        </table>        
-    </div>
-
-    <table class="board-container">
-        <tbody class="game-board"></tbody>
-    </table>
-    
     <!-- Don't Change the div "modal" -->
-        <div class="modal"></div>
+    <div class="modal"></div>
+
+    <div class="table-board">
+        <div class="scores">
+            <table>
+                <thead>
+                    <th>Level</th>
+                    <th>Best Score</th>
+                </thead>
+                <tbody>
+                    <!-- Render Score -->
+                </tbody>
+            </table>
+        </div>
+
+        <table class="board-container">
+            <tbody class="game-board"></tbody>
+        </table>
+        
+    </div>
 
 
     <footer>

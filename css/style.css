@@ -5,7 +5,6 @@
 
 body {
     background-color: aquamarine;
-    /* background-image: url('../img/background.jpg'); */
     background-size: 100% auto;
     display: flex;
     font-weight: bold;
@@ -34,6 +33,14 @@ button:hover {
 table {
     margin: 0 auto;
     margin-left: 1.5em;
+}
+
+.table-board {
+    display: flex;
+}
+
+.scores {
+    flex-grow: 0;
 }
 
 .dark-mode {
@@ -103,9 +110,8 @@ table {
     width: 35ex;
 }
 
-td.cell.cell{
-
-    color: red;
+td.cell.cell {
+    color: rgb(249, 105, 2);
 }
 
 .difficult-select {
@@ -113,18 +119,20 @@ td.cell.cell{
 }
 
 .reset-game {
-    margin: 0;
-    width: 2em;
-    height: 2em;
-    border-radius: 40%;
+    margin: 0 auto;
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
 }
 
 .board-container {
-    margin: 0 auto;
+    margin: 20px 20%;
+    margin-top: 1.5em;
 }
 
-.modal{
+.modal {
     margin-top: 1em auto;
+    margin-left: 40vmax;
 }
 
 footer {
@@ -133,37 +141,4 @@ footer {
     padding: 15px;
     background-color: rgba(19, 230, 222, 0.467);
     font-size: 25px;
-}
-
-/* Number cell color */
-.n1 {
-    color: blue;
-}
-
-.n2 {
-    color: red;
-}
-
-.n3 {
-    color: green;
-}
-
-.n4 {
-    color: purple;
-}
-
-.n5 {
-    color: lightsalmon;
-}
-
-.n6 {
-    color: orange;
-}
-
-.n7 {
-    color: black;
-}
-
-.n8 {
-    color: gold;
 }

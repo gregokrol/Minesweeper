@@ -92,11 +92,9 @@ function startTimer() {
 
         var displayTime = `${min.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`
         elTimer.innerText = `${displayTime}`
-        time = `${min}`+':'+ `${sec}`
-        // console.log(elTimer,"elTimer");
-        console.log(time,'gTime');
+        time = displayTime
     }, 1000);
-
+    
 }
 
 function stopTimer() {

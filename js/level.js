@@ -2,10 +2,13 @@
 
 var gLevel = {
     SIZE: 4,
-    MINES: 2
+    MINES: 2,
+    level:'easy'
 }
 
 function onSetGameLevel(level) {
+
+    gLevel.level = level
 
     if (level === 'easy') {
         gLevel.SIZE = 4
@@ -19,5 +22,10 @@ function onSetGameLevel(level) {
         gLevel.SIZE = 12
         gLevel.MINES = 32
     }
+
+    var elLevel = document.querySelector('.mine')
+    var mine = `${gLevel.MINES}`
+    elLevel.innerText = `${mine}`
+    
     resetGame()
 }
