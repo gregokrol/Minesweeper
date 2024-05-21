@@ -94,7 +94,7 @@ function startTimer() {
         elTimer.innerText = `${displayTime}`
         time = displayTime
     }, 1000);
-    
+
 }
 
 function stopTimer() {
@@ -110,7 +110,7 @@ function resetTimer() {
 // Dark Mode
 function toggleMode() {
     const currentMode = localStorage.getItem('mode')
-    const newMode = (currentMode === 'light' ? 'dark' : 'light')
+    const newMode = (currentMode === 'dark' ? 'light' : 'dark')
 
     localStorage.setItem('mode', newMode)
 
@@ -120,10 +120,10 @@ function toggleMode() {
 function applyMode(mode) {
     const switchButton = document.getElementById('lightMode')
     if (mode === 'dark') {
-        switchButton.textContent = 'Light'
+        switchButton.textContent = 'Dark'
         document.body.classList.add('dark-mode')
     } else {
-        switchButton.textContent = 'Dark'
+        switchButton.textContent = 'Light'
         document.body.classList.remove('dark-mode')
     }
 }
@@ -134,3 +134,37 @@ document.addEventListener('DOMContentLoaded', () => {
         applyMode(storedMode)
     }
 })
+
+
+function resetApplication() {
+
+    gGame.isOn = false;
+    gGame.isWin = false;
+    gBoard = [];
+    gScore = 0;
+
+    clearGameBoard()
+    clearScoreDisplay()
+
+    gBoard = buildBoard()
+
+    renderBoard(gBoard)
+    renderScoreTable()
+
+    initializeClickListeners()
+}
+
+function playWinSound() {
+	var audio = new Audio('audio/win.wav')
+	audio.play()
+}
+
+function playBombSound() {
+	var audio = new Audio('audio/bomb.wav')
+	audio.play()
+}
+
+function playLoseSound() {
+	var audio = new Audio('audio/lose.wav')
+	audio.play()
+}

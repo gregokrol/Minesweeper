@@ -10,6 +10,7 @@ function stillLive() {
             elLives.innerText = elLives.innerText.slice(0, -2)
         }
 
+        playBombSound()
         alert('Oops, you exploded. You have left' + ' ' + gGame.lives + ' ' + 'life')
         gGame.lives--
 

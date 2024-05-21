@@ -3,8 +3,18 @@
     font-family: "Comic Sans MS", cursive, sans-serif;
 }
 
+:root{
+    --background-web-color:aquamarine;
+    --cell-width : 1.7em;
+    --cell-height : var(--cell-width);
+    --button-color : rgba(225, 255, 117, 0.567);
+    --button-color-action : rgba(175, 199, 92, 0.567);
+    --button-size : 1.5vh;
+    --button-text-color : rgb(0, 0, 0);
+}
+
 body {
-    background-color: aquamarine;
+    background-color: var(--background-web-color);
     background-size: 100% auto;
     display: flex;
     font-weight: bold;
@@ -17,9 +27,9 @@ body {
 button {
     margin-right: 10px;
     margin-bottom: 10px;
-    color: rgb(0, 0, 0);
-    background-color: rgba(225, 255, 117, 0.567);
-    font-size: 1.5vh;
+    color: var(--button-text-color);
+    background-color: var(--button-color);
+    font-size: var(--button-size);
     font-weight: 600;
     border-radius: 10px;
 }
@@ -27,7 +37,7 @@ button {
 button:hover {
     cursor: pointer;
     transition: 0.5s;
-    background-color: rgba(175, 199, 92, 0.567);
+    background-color: var(--button-color-action);
 }
 
 table {
@@ -50,7 +60,7 @@ table {
 
 .scores table {
     font-size: 20px;
-    color: #000000;
+    color: black;
     font-weight: 700;
     font-style: italic;
     text-transform: capitalize;
@@ -75,8 +85,8 @@ table {
 
 .cell {
     font-size: 1.25em;
-    width: 1.5em;
-    height: 1.5em;
+    width: var(--cell-width);
+    height: var(--cell-height);
     border: 1.5px solid rgb(130, 130, 130);
     background-color: rgb(174, 174, 174);
     transition: 0.45s;

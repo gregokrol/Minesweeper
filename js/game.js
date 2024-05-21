@@ -70,7 +70,7 @@ function renderBoard(board) {
 function renderCell(rowIdx, colIdx, value) {
     const elCell = document.querySelector(`.cell-${rowIdx}-${colIdx}`)
     
-    if (value === 0) {
+    if (!value) {
         value = ''
         elCell.classList.add('empty-cell')
     }
@@ -215,6 +215,7 @@ function checkWin() {
     gGame.isOn = false
     
     stopTimer()
+    playWinSound()
     checkBestScore()
 }
 
@@ -234,6 +235,7 @@ function gameOver() {
     gGame.isWin = false
     elModal.innerHTML = 'You Lose, Maybe next time...'
     gGame.isOn = false
+    playLoseSound()
     stopTimer()
 }
 
@@ -243,7 +245,7 @@ function resetGame() {
 
     var elLives = document.querySelector('.lives')
     elLives.innerText = '❤️❤️❤️'
-
+      
     gGame = {
         isOn: false,
         isWin: false,
@@ -258,9 +260,8 @@ function resetGame() {
 
     const elImage = document.querySelector('.reset-game')
     elImage.setAttribute('src', 'img/smiley.jpg')
-
     elModal.innerHTML = ''
-
+    
     elBoard.removeEventListener('contextmenu', flagCell)
     stopTimer()
     resetTimer()
